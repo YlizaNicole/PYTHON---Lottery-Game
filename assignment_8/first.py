@@ -7,20 +7,53 @@
 #If the user enter “y” the user will play again
 #if “n” the program will exit.
 
-import ran
+import re
+import random
 
 def intro ():
     print ("Hello User! you're in luck! We're gonna play Lotto! ")
     name = input("what is your name?: ")
     name = name.title()
-    print ("""Hello {}, welcome again to this program! enter your lucky numbers to win this game. Good Luck! """. format(name))
+    print ("""Hello {}, welcome again to this program! enter your 3 lucky numbers to win this game. Good Luck! """. format(name))
 
-def user_input ():
-    correct_guess = []
-    for num in guessed_numbers:
-        if num in generated:
-            correct_guess.append(num)
+
+def check(answer, lottonum):
+    if  (answer == lottonum):
+        print ("\nWinner Winner! Chicken Dinner\n")
+    else:
+        print ("\nYou lose\n")
+
+
+
+def getanswer():
+    answer = []
+
+    for x in range(3):
+        nums = int(input("Pick a number 0 through 9: "))
+        if 0 <= nums <= 9:
+            answer.append(nums)
+        else:
+            input("Invalid input")
             
-            print('your correct guesses  are', correct_guess)
-            print('you guessed ', guessed_numbers)
-            print('the supposed are ', generated)
+
+            
+    return sorted(answer)
+
+def getlottonum():
+    ran = random.sample(range(0,9), 3)
+    ran.append
+    return sorted (ran)
+
+def main():
+    answer = getanswer()
+    lottonum = getlottonum() 
+    check(answer, lottonum)
+
+intro ()
+main()
+
+again = str(input("Do you want to play again (type y/n): ")).lower()
+if again == "y":
+    main ()
+else:
+    exit ()
